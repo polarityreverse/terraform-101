@@ -12,16 +12,17 @@ data "terraform_remote_state" "db" {
 }
 
 module "webserver_cluster" {
-  source = "../../../modules/services/webserver-cluster"
+  source = "git::https://github.com/polarityreverse/terraform-101.git//modules/services/webserver-cluster?ref=v0.0.1"
+
   cluster_name = "webservers-stage"
-  
+
   server_port = var.server_port
-  address  = data.terraform_remote_state.db.outputs.address
-  port     = data.terraform_remote_state.db.outputs.port
+  address      = data.terraform_remote_state.db.outputs.address
+  port         = data.terraform_remote_state.db.outputs.port
 
   instance_type = "t3.micro"
-  min_size = 2
-  max_size = 2
+  min_size      = 2
+  max_size      = 2
 }
 
 
