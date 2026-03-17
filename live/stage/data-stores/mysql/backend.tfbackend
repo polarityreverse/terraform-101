@@ -1,0 +1,3 @@
+bucket = "terraform-state-file-store-for-polarity"
+key    = "stage/data-stores/mysql/terraform.tfstate"
+region = "us-east-1"
